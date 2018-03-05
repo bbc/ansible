@@ -24,7 +24,7 @@ from ansible.compat.six import PY3
 
 from ansible.parsing.yaml.objects import AnsibleUnicode, AnsibleSequence, AnsibleMapping
 from ansible.parsing.yaml.objects import AnsibleVaultEncryptedUnicode
-from ansible.vars.hostvars import HostVars
+from ansible.vars.hostvars import HostVars, HostVarsVars
 from ansible.vars.unsafe_proxy import AnsibleUnsafeText
 
 
@@ -59,6 +59,11 @@ AnsibleDumper.add_representer(
 
 AnsibleDumper.add_representer(
     HostVars,
+    represent_hostvars,
+)
+
+AnsibleDumper.add_representer(
+    HostVarsVars,
     represent_hostvars,
 )
 
