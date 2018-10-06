@@ -560,6 +560,8 @@ def install(m, pkgspec, cache, upgrade=False, default_release=None,
         if allow_unauthenticated:
             cmd += " --allow-unauthenticated"
 
+        cmd = "strace -tt -f -e trace=network " + cmd
+
         rc, out, err = m.run_command(cmd)
         if m._diff:
             diff = parse_diff(out)
